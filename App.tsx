@@ -4,9 +4,16 @@
  *
  * @format
  */
-
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
+import LottieView from 'lottie-react-native';
+import {ThemeProvider} from 'styled-components';
+import {Theme} from './src/styles/DefaultTheme';
+import {WebView} from 'react-native-webview';
+import FullWebView from './src/screens/FullWebView';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -24,79 +31,56 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [isSplash, setIsSplash] = useState(true);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  StatusBar.setBackgroundColor(Theme.colors.side.side100);
+  StatusBar.setBarStyle('dark-content');
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+  return isSplash ? (
+    <ThemeProvider theme={Theme}>
+      <SafeAreaView style={styles.splashSafeAreaView}>
+        <StatusBar />
+        <LottieView
+          style={styles.splashView}
+          source={require('./src/assets/animations/Splash.json')}
+          autoPlay
+          loop={false}
+          resizeMode="cover"
+          onAnimationFinish={() => {
+            setIsSplash(false);
+          }}
+        />
+      </SafeAreaView>
+    </ThemeProvider>
+  ) : (
+    <ThemeProvider theme={Theme}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          <Stack.Screen name="Home" component={FullWebView} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
 const styles = StyleSheet.create({
+  splashSafeAreaView: {
+    backgroundColor: Colors.lighter,
+    flex: 1,
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  splashView: {
+    width: '100%',
+    height: '100%',
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

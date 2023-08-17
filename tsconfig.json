@@ -1,3 +1,23 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"],
+      "components/*": ["components/*"],
+      "configs/*": ["configs/*"],
+      "font/*": ["font/*"],
+      "hooks/*": ["hooks/*"],
+      "pages/*": ["pages/*"],
+      "stores/*": ["stores/*"],
+      "utils/*": ["utils/*"],
+      "styles/*": ["styles/*"],
+      "assets/*": ["assets/*"],
+      "data/*": ["data/*"]
+    }
+  },
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "include": ["src"],
+  "exclude": [""]
 }
