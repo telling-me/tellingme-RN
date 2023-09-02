@@ -67,3 +67,8 @@ yarn-error.log
 
 # .vscode
 .vscode/*
+
+# react-native-config
+.env
+.env.development
+.env.production

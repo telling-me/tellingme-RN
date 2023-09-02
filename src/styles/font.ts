@@ -16,17 +16,6 @@ export interface IFont {
     b2: string;
     c: string;
   };
-  lineHeight: {
-    h1: string;
-    h2: string;
-    h3: string;
-    h4: string;
-    h5: string;
-    h6: string;
-    b1: string;
-    b2: string;
-    c: string;
-  };
 }
 
 const font: IFont = {
@@ -46,17 +35,6 @@ const font: IFont = {
     b1: '15px',
     b2: '14px',
     c: '12px',
-  },
-  lineHeight: {
-    h1: '1',
-    h2: '1',
-    h3: '1',
-    h4: '1',
-    h5: '1',
-    h6: '1',
-    b1: '1',
-    b2: '1',
-    c: '1',
   },
 };
 

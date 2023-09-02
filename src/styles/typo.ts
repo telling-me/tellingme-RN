@@ -32,96 +32,96 @@ const typo: ITypo = {
     h1_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h1};
-      line-height: ${font.lineHeight.h1};
-      `,
+      font-family: 'NanumSquareRoundOTFB';
+    `,
     h1: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h1};
-      line-height: ${font.lineHeight.h1};
-      `,
+      font-family: 'NanumSquareRoundOTFR';
+    `,
     h2_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h2};
-      line-height: ${font.lineHeight.h2};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     h2: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h2};
-      line-height: ${font.lineHeight.h2};
+      font-family: 'NanumSquareRoundOTFR';
       `,
     h3_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h3};
-      line-height: ${font.lineHeight.h3};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     h3: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h3};
-      line-height: ${font.lineHeight.h3};
+      font-family: 'NanumSquareRoundOTFR';
       `,
     h4_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h4};
-      line-height: ${font.lineHeight.h4};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     h4: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h4};
-      line-height: ${font.lineHeight.h4};
+      font-family: 'NanumSquareRoundOTFR';
       `,
     h5_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h5};
-      line-height: ${font.lineHeight.h5};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     h5: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h5};
-      line-height: ${font.lineHeight.h5}
+      font-family: 'NanumSquareRoundOTFR';
       `,
     h6_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.h6};
-      line-height: ${font.lineHeight.h6};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     h6: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.h6};
-      line-height: ${font.lineHeight.h6};
+      font-family: 'NanumSquareRoundOTFR';
       `,
   },
   body: {
     b1_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.b1};
-      line-height: ${font.lineHeight.b1};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     b1: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.b1};
-      line-height: ${font.lineHeight.b1};
+      font-family: 'NanumSquareRoundOTFR';
       `,
     b2_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.b2};
-      line-height: ${font.lineHeight.b2};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     b2: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.b2};
-      line-height: ${font.lineHeight.b2};
+      font-family: 'NanumSquareRoundOTFR';
       `,
   },
   caption: {
     c_b: `
       font-weight: ${font.weight.bold};
       font-size: ${font.size.c};
-      line-height: ${font.lineHeight.c};
+      font-family: 'NanumSquareRoundOTFB';
       `,
     c: `
       font-weight: ${font.weight.regular};
       font-size: ${font.size.c};
-      line-height: ${font.lineHeight.c};
+      font-family: 'NanumSquareRoundOTFR';
       `,
   },
 };

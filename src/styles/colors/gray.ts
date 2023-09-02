@@ -8,7 +8,7 @@ export interface IGray {
   gray6: string;
   gray7: string;
   gray8: string;
-  black: string;
+  gray_black: string;
 }
 
 const gray: IGray = {
@@ -21,7 +21,7 @@ const gray: IGray = {
   gray6: '#666F6A',
   gray7: '#4D534F',
   gray8: '#404642',
-  black: '#333835',
+  gray_black: '#333835',
 };
 
 export default gray;

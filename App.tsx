@@ -5,33 +5,29 @@
  * @format
  */
 import React, {useState} from 'react';
-import type {PropsWithChildren} from 'react';
-import LottieView from 'lottie-react-native';
+
 import {ThemeProvider} from 'styled-components';
 import {Theme} from './src/styles/DefaultTheme';
-import {WebView} from 'react-native-webview';
-import FullWebView from './src/screens/FullWebView';
+
+import LottieView from 'lottie-react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Login from './src/screens/Login';
+import MainWebView from '~/screens/MainWebView';
+import SignUpWebView from '~/screens/SignUpWebView';
+
 const Stack = createStackNavigator();
+
+export type RootStackParamList = {
+  Login: undefined;
+  Home: undefined;
+  Main: {accessToken: string; refreshToken: string};
+  SignUp: {socialId: string; socialLoginType: string; token: string};
+};
 
 function App(): JSX.Element {
   const [isSplash, setIsSplash] = useState(true);
@@ -61,8 +57,11 @@ function App(): JSX.Element {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-          }}>
-          <Stack.Screen name="Home" component={FullWebView} />
+          }}
+          initialRouteName="Login">
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Main" component={MainWebView} />
+          <Stack.Screen name="SignUp" component={SignUpWebView} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
