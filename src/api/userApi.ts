@@ -85,6 +85,9 @@ export const userApi = {
   getUserInfo: async () => {
     return await API.get('/api/user');
   },
+  getUserPush: async () => {
+    return await API.get('/api/user/push');
+  },
   getUserNoti: async () => {
     return await API.get('/api/user/notification');
   },
@@ -123,6 +126,15 @@ export const userApi = {
   },
   getUserPushToken: async () => {
     return await API.get('/api/user/pushToken');
+  },
+  updatePush: async (allowNotification: boolean, pushToken: string) => {
+    return await API.post(
+      '/api/user/update/push',
+      {allowNotification, pushToken},
+      {
+        headers: {'Content-Type': 'application/json'},
+      },
+    );
   },
   updateUserPushToken: async (pushToken: string) => {
     return await API.post(

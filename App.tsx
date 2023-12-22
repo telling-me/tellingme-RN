@@ -5,6 +5,7 @@
  * @format
  */
 import React, {useState} from 'react';
+import Toast from 'react-native-toast-message';
 
 import {ThemeProvider} from 'styled-components';
 import {Theme} from './src/styles/DefaultTheme';
@@ -19,6 +20,16 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Login from './src/screens/Login';
 import MainWebView from '~/screens/MainWebView';
 import SignUpWebView from '~/screens/SignUpWebView';
+import messaging from '@react-native-firebase/messaging';
+
+messaging().setBackgroundMessageHandler(async remoteMessage => {
+  console.log('[Background Remote Message]', remoteMessage);
+});
+
+// fcm
+export const getToken = async () => {
+  return await messaging().getToken();
+};
 
 const Stack = createStackNavigator();
 
@@ -64,6 +75,7 @@ function App(): JSX.Element {
           <Stack.Screen name="SignUp" component={SignUpWebView} />
         </Stack.Navigator>
       </NavigationContainer>
+      <Toast />
     </ThemeProvider>
   );
 }

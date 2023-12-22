@@ -40,6 +40,7 @@ const kakaoLogin = ({navigation}: LoginScreenProps) => {
       apis
         .checkUserInfo('kakao', data.accessToken, 'manual', '')
         .then(res => {
+          console.log(res);
           AsyncStorage.setItem('socialId', res.data.socialId);
           AsyncStorage.setItem('accessToken', res.data.accessToken);
           AsyncStorage.setItem('socialLoginType', 'kakao');
@@ -49,8 +50,8 @@ const kakaoLogin = ({navigation}: LoginScreenProps) => {
           });
         })
         .catch(err => {
-          console.log(data);
-          if (err.response.status === 404) {
+          console.log(err);
+          if (err.response?.status === 404) {
             navigation.navigate('SignUp', {
               socialId: err.response.data.socialId,
               socialLoginType: err.response.data.socialLoginType,
@@ -101,7 +102,7 @@ const AppleLogin = async ({navigation}: LoginScreenProps) => {
       });
     })
     .catch(err => {
-      if (err.response.status === 404) {
+      if (err.response?.status === 404) {
         navigation.navigate('SignUp', {
           socialId: err.response.data.socialId,
           socialLoginType: err.response.data.socialLoginType,
@@ -162,7 +163,7 @@ const Login = ({navigation}: LoginScreenProps) => {
       return () => {
         setIsLogin(false);
       };
-    }, []),
+    }, [navigation]),
   );
 
   useEffect(() => {
@@ -224,6 +225,7 @@ const Login = ({navigation}: LoginScreenProps) => {
           />
           <WithLocalSvg
             style={styles.Center}
+            color={theme.colors.logo}
             asset={Logo}
             width={234}
             height={98}

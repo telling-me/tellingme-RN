@@ -1,4 +1,3 @@
-import {MouseEventHandler} from 'react';
 import {ColorType, TextTypoType} from '~/type/common';
 
 export type ButtonType =
@@ -20,7 +19,7 @@ export interface IAtomButtonStyle {
   _margin?: string;
   _padding?: string;
   _disabled?: boolean;
-  _onClick?: MouseEventHandler<HTMLButtonElement>;
+  _onClick?: () => void;
 }
 
 export interface IAtomButton extends IAtomButtonStyle {}

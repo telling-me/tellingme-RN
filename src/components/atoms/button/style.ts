@@ -2,6 +2,8 @@ import styled, {css} from 'styled-components/native';
 import {IAtomButtonStyle, IAtomIconButtonStyle} from './type';
 
 export const ButtonWrapper = styled.Pressable<IAtomButtonStyle>`
+  border-radius: 20px;
+  align-items: center;
   ${({_width}) => _width !== undefined && `width: ${_width};`}
   ${({_height}) => _height !== undefined && `height: ${_height};`}
   ${({_margin}) => _margin !== undefined && `margin: ${_margin};`}
@@ -31,7 +33,6 @@ export const ButtonWrapper = styled.Pressable<IAtomButtonStyle>`
     props.buttonType === 'secondary' &&
     css`
       background-color: ${props => props.theme.colors.primary.primary25};
-
       &:hover {
         background-color: ${props => props.theme.colors.primary.primary25};
         box-shadow: ${props => props.theme.shadow.shadow1};

@@ -25,9 +25,10 @@ export const AtomText = styled.Text<IAtomTextStyle>`
       : typo === 'b1_b' || typo === 'b1' || typo === 'b2_b' || typo === 'b2'
       ? theme.typo.body[typo]
       : (typo === 'c_b' || typo === 'c') && theme.typo.caption[typo]};
-  ${({textColor}) =>
+  ${({textColor, theme}) =>
     css`
-      color: ${useChangeColor(textColor as ColorType)};
+      color: ${useChangeColor(textColor as ColorType) ??
+      theme.colors.gray.gray_black};
     `};
   ${({ellipsis}) =>
     (ellipsis ?? false) &&

@@ -1,25 +1,30 @@
-import {useTheme} from 'styled-components';
-import {ColorType} from '~/type/common';
+import {Theme} from 'styles/DefaultTheme';
 
-const useChangeColor = (color: ColorType) => {
-  const theme = useTheme();
-  return Object.keys(theme.colors.primary).includes(color)
-    ? theme.colors.primary[color]
-    : Object.keys(theme.colors.secondary).includes(color)
-    ? theme.colors.secondary[color]
-    : Object.keys(theme.colors.gray).includes(color)
-    ? theme.colors.gray[color]
-    : Object.keys(theme.colors.error).includes(color)
-    ? theme.colors.error[color]
-    : Object.keys(theme.colors.side).includes(color)
-    ? theme.colors.side[color as keyof typeof theme.colors.side]
-    : color === 'logo'
-    ? theme.colors.logo
-    : color === 'white'
+// primary200 -> ##B0F5CA 형식으로 변경
+const useChangeColor = (beforeColor: string) => {
+  const afterColor = Object.keys(Theme.colors.primary).includes(beforeColor)
+    ? Theme.colors.primary[beforeColor]
+    : Object.keys(Theme.colors.secondary).includes(beforeColor)
+    ? Theme.colors.secondary[beforeColor]
+    : Object.keys(Theme.colors.gray).includes(beforeColor)
+    ? Theme.colors.gray[beforeColor]
+    : Object.keys(Theme.colors.error).includes(beforeColor)
+    ? Theme.colors.error[beforeColor]
+    : Object.keys(Theme.colors.side).includes(beforeColor)
+    ? Theme.colors.side[beforeColor as keyof typeof Theme.colors.side]
+    : Object.keys(Theme.colors.emotion).includes(beforeColor)
+    ? Theme.colors.emotion[beforeColor]
+    : Object.keys(Theme.colors.sub).includes(beforeColor)
+    ? Theme.colors.sub[beforeColor as keyof typeof Theme.colors.sub]
+    : beforeColor === 'logo'
+    ? Theme.colors.logo
+    : beforeColor === 'white'
     ? '#ffffff'
-    : color === 'black'
+    : beforeColor === 'black'
     ? '#000000'
-    : color === 'gradient' && theme.gradient;
+    : beforeColor === 'gradient' && Theme.gradient;
+
+  return afterColor;
 };
 
 export default useChangeColor;

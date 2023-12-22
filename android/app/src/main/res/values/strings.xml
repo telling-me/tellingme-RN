@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">텔링미</string>
+    <string name="app_name_release">텔링미</string>
+    <string name="app_name_debug">텔링미_디버깅</string>
     <string name="kakao_app_key">@string/KAKAO_REST_API_KEY</string>
+
 </resources>

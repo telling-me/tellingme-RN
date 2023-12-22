@@ -47,39 +47,46 @@ const SignUpWebView = ({route, navigation}: SignUpScreenProps) => {
   const handleMessage = (message: any) => {
     const data = JSON.parse(message.nativeEvent.data);
 
-    if (data === 'signUpComplete') {
-      // 회원가입 후 로그인 하기
-      apis
-        .checkUserInfo(
-          route.params.socialLoginType,
-          route.params.token as string,
-          'manual',
-          '',
-        )
-        .then(res => {
-          AsyncStorage.setItem('socialId', res.data.socialId);
-          AsyncStorage.setItem('accessToken', res.data.accessToken);
-          AsyncStorage.setItem('socialLoginType', route.params.socialLoginType);
-          navigation.navigate('Main', {
-            accessToken: res.data.accessToken,
-            refreshToken: res.data.refreshToken,
-          });
-        })
-        .catch(err => {
-          if (err.response.status === 404) {
-            navigation.navigate('SignUp', {
-              socialId: err.response.data.socialId,
-              socialLoginType: err.response.data.socialLoginType,
-              token: route.params.token,
+    switch (data?.event) {
+      case 'signUpComplete':
+        // 회원가입 후 로그인 하기
+        apis
+          .checkUserInfo(
+            route.params.socialLoginType,
+            route.params.token as string,
+            'manual',
+            '',
+          )
+          .then(res => {
+            AsyncStorage.setItem('socialId', res.data.socialId);
+            AsyncStorage.setItem('accessToken', res.data.accessToken);
+            AsyncStorage.setItem(
+              'socialLoginType',
+              route.params.socialLoginType,
+            );
+            navigation.navigate('Main', {
+              accessToken: res.data.accessToken,
+              refreshToken: res.data.refreshToken,
             });
-          } else {
-            Alert.alert('로그인에 실패했습니다.');
-          }
-        });
-    } else if (data === 'login') {
-      navigation.navigate('Login');
-    } else {
-      navigation.navigate('Login');
+          })
+          .catch(err => {
+            if (err.response.status === 404) {
+              navigation.navigate('SignUp', {
+                socialId: err.response.data.socialId,
+                socialLoginType: err.response.data.socialLoginType,
+                token: route.params.token,
+              });
+            } else {
+              Alert.alert('로그인에 실패했습니다.');
+            }
+          });
+        break;
+      case 'login':
+        navigation.navigate('Login');
+        break;
+      default:
+        navigation.navigate('Login');
+        break;
     }
   };
 

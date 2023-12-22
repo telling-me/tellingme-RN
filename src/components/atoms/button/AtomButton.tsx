@@ -25,11 +25,11 @@ const AtomButton = ({
       _margin={_margin}
       _padding={_padding}
       disabled={_disabled}
-      _onClick={e => {
+      onPress={_ => {
         if (_onClick === undefined) {
           return;
         }
-        _onClick(e);
+        _onClick();
       }}>
       <AtomText typo={typo} textColor={textColor}>
         {text}
